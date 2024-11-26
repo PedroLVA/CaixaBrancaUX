@@ -8,11 +8,11 @@ public class User {
     public Connection conectarBD() {
         Connection conn = null;
         try {
-            Class.forName("com.mysql.Driver").newInstance();
-            String url = "jdbc:mysql://127.0.0.1/test?user=lopes&password=123";
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            String url = "jdbc:mysql://localhost:3308/atividadeux?user=root&password=usbw";
             conn = DriverManager.getConnection(url);
         } catch (Exception e) {
-            // Tratamento do erro
+            System.out.println("Deu erro na conexão: " + e);
         }
         return conn;
     }
@@ -34,7 +34,7 @@ public class User {
                 nome = rs.getString("nome");
             }
         } catch (Exception e) {
-            // Tratamento do erro
+            System.out.println("Deu erro na verificação: " + e);
         }
         return result;
     }
