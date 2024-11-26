@@ -1,4 +1,7 @@
 # Error Encontrados:
+* "com.mysql.Driver" estoura uma exceção de java.lang.ClassNotFoundException, ou seja, a classe não é encontrada
+
+Para corrigir, devemos mudar para a classe: com.mysql.cj.jdbc.Driver 
 
 * Injeção de SQL:
 
