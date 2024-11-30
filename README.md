@@ -1,30 +1,5 @@
-# Error Encontrados:
-* "com.mysql.Driver" estoura uma exceção de java.lang.ClassNotFoundException, ou seja, a classe não é encontrada
+<h1>Fluxo v1:</h1>
 
-Para corrigir, devemos mudar para a classe: com.mysql.cj.jdbc.Driver 
+<br>
 
-* Injeção de SQL:
-
-O uso de concatenação de strings na query SQL "(sql += "where login = '" + login + "'";)". Isso faz com que seja possível SQL injection no código.
-
-* Tratamento de exceções insuficiente:
-
-As exceções estão sendo capturadas, porém, nada é feito, seria ideal relatar o erro para o desenvolvedor ou cliente.
-</br>
-
-
-* newInstance() está deprecated:
-
-Isso significa que não é ideal permanecer usando esse método, uma vez que suporte para com ele será cessado.
-</br>
-
-* Conexões não fechadas:
-
-As conexões, declarações e resultados não são fechados, o que pode causar vazamentos de recursos.
-
-* conectarBD foi usado sem try catch:
-
-Caso aconteceça algum problema ao receber o conn, o método verificaUsuario irá disparar uma exceção.
-
-
-
+![image](https://github.com/user-attachments/assets/aad96115-d5b1-44ac-98e7-14c958da7070)
