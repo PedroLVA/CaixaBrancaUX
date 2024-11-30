@@ -1,25 +1,29 @@
-<h1>Fluxo v2:</h1>
+# Atividade Caixa Branca
 
-<br>
+Este repositório contém um exemplo de implementação em Java que realiza a conexão com um banco de dados e a verificação de usuários. Ele também inclui a documentação gerada com **Javadoc**.
 
-![image](https://github.com/user-attachments/assets/9f0c7984-797c-4c0b-8bf6-da21473ab093)
+## Estrutura do Projeto
 
+O projeto possui as seguintes classes principais:
 
-## Complexidade ciclomática:
+### 1. `User`
+A classe `User` é responsável por:
+- **Conectar ao banco de dados**: Utiliza o driver JDBC para se conectar a um banco MySQL.
+- **Verificar usuários**: Realiza a autenticação de login e senha no banco de dados.
 
-* M = E - N + 2P
-* M = 21 - 19 + 2
-* M = 4
+### Funcionalidades Principais
+#### Método `conectarBD()`
+- Estabelece uma conexão com o banco de dados MySQL.
+- Retorna um objeto `Connection` para ser utilizado em consultas.
+- Retornando `null` caso a conexão não seja bem-sucedida.
 
-### A complexidade ciclomática é: 4
+#### Método `verificarUsuario(String login, String senha)`
+- Valida as credenciais fornecidas (`login` e `senha`) contra os dados armazenados no banco de dados.
+- Retorna `true` caso a autenticação seja bem-sucedida.
+- Preenche a variável `nome` com o nome do usuário autenticado.
 
-<br>
+## Gerando a Documentação Javadoc
 
-## Caminhos:
-
-* Caminho 1: 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 10 - 11 - 12 - 13 - 14 - 15 - 16 - 17 - 19
-* Caminho 2: 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 10 - 11 - 12 - 13 - 14 - 15 - 19
-* Caminho 3: 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 11 - 12 - 13 - 14 - 15 - 19
-* Caminho 4: 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 11 - 12 - 13 - 18 - 19
+A documentação do código foi gerada utilizando o **Javadoc**.
 
 
