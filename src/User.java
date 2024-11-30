@@ -9,9 +9,10 @@ public class User {
         Connection conn = null; //4
         try { //5
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); //6
-            String url = "jdbc:my   sql://localhost:3308/atividadeux?user=root&password=usbw"; //7
+            String url = "jdbc:mysql://localhost:3308/atividadeux?user=root&password=usbw"; //7
             conn = DriverManager.getConnection(url); //8
-        } catch (Exception e)  { //9
+        } catch (Exception e)  {
+            System.out.println();//9
         }
         return conn; //10
     }
@@ -32,7 +33,8 @@ public class User {
                 result = true; //16
                 nome = rs.getString("nome"); //17
             }
-        } catch (Exception e) { //18
+        } catch (Exception e) {
+            System.out.println();//18
         }
         return result; //19
     }
