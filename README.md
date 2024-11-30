@@ -22,8 +22,7 @@ A classe `User` é responsável por:
 - Retorna `true` caso a autenticação seja bem-sucedida.
 - Preenche a variável `nome` com o nome do usuário autenticado.
 
-## Gerando a Documentação Javadoc
 
-A documentação do código foi gerada utilizando o **Javadoc**.
+
 
 
