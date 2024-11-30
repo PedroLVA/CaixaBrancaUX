@@ -4,40 +4,81 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * Classe responsável por gerenciar a conexão com o banco de dados
+ * e a verificação de usuários.
+ * <p>Essa classe fornece métodos para conectar ao banco de dados e validar usuario.</p>
+ * @author Pedro Luiz Vidal Athayde
+ * @version 1.0
+ */
+
 public class User {
+    /**
+     * Conecta ao banco de dados usando o driver MySQL JDBC.
+     *
+     * @return Um objeto Connection se a conexão for bem-sucedida; caso contrário, retorna null.
+     */
+
     public Connection conectarBD() {
-        Connection conn = null; //4
-        try { //5
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance(); //6
-            String url = "jdbc:mysql://localhost:3308/atividadeux?user=root&password=usbw"; //7
-            conn = DriverManager.getConnection(url); //8
-        } catch (Exception e)  {
-            System.out.println();//9
+        Connection conn = null; // Conexão inicializada como nula
+        try {
+            // Carrega a classe do driver JDBC do MySQL
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+            // String de conexão com o banco de dados
+            String url = "jdbc:mysql://localhost:3308/atividadeux?user=root&password=usbw";
+
+            // Estabelece a conexão com o banco de dados
+            conn = DriverManager.getConnection(url);
+        } catch (Exception e) {
+            // Exceção capturada (nenhuma ação específica é tomada)
         }
-        return conn; //10
+        return conn; // Retorna a conexão (pode ser null se houver erro)
     }
-    public String nome = ""; //1
-    public boolean result = false; //1
 
+    /**
+     * Nome do usuário autenticado. Preenchido após uma verificação bem-sucedida.
+     */
+    public String nome = ""; // Inicialmente vazio
+
+    /**
+     * Resultado da verificação de login. True se o usuário for autenticado com sucesso.
+     */
+    public boolean result = false; // Inicialmente falso
+
+    //---------------------------
+
+    /**
+     * Verifica as credenciais de login e senha de um usuário no banco de dados.
+     *
+     * @param login O login do usuário.
+     * @param senha A senha do usuário.
+     * @return true se o login e a senha corresponderem a um usuário no banco de dados; false caso contrário.
+     */
     public boolean verificarUsuario(String login, String senha) {
-        String sql = ""; //2
-        Connection conn = conectarBD(); //3
-        sql = "select nome from usuarios "; //11
-        sql += "where login = '" + login + "'"; //11
-        sql += " and senha = '" + senha + "'";//11
+        String sql = ""; // String SQL inicializada
+        Connection conn = conectarBD(); // Conecta ao banco de dados
 
-        try { //12
-            Statement st = conn.createStatement(); //13
-            ResultSet rs = st.executeQuery(sql); //14
-            if (rs.next()) { //15
-                result = true; //16
-                nome = rs.getString("nome"); //17
+        // Monta a consulta SQL para buscar o usuário com o login e senha fornecidos
+        sql = "select nome from usuarios ";
+        sql += "where login = '" + login + "'";
+        sql += " and senha = '" + senha + "'";
+
+        try {
+            // Cria um Statement para executar a consulta SQL
+            Statement st = conn.createStatement();
+
+            // Executa a consulta e obtém os resultados
+            ResultSet rs = st.executeQuery(sql);
+
+            // Se encontrar um resultado, autentica o usuário e armazena o nome
+            if (rs.next()) {
+                result = true;
+                nome = rs.getString("nome");
             }
         } catch (Exception e) {
-            System.out.println();//18
+            // Exceção capturada (nenhuma ação específica é tomada)
         }
-        return result; //19
+        return result; // Retorna o resultado da verificação
     }
-
-
 }
